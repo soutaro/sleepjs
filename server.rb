@@ -12,6 +12,10 @@ class Server < Angelo::Base
     erb :index, locals: { host: request.headers["Host"] }
   end
 
+  get '/background' do
+    File.read(File.join("public", "4532294801_d34d36ed57_o.jpg"))
+  end
+
   get '/sleep.js' do
     erb :sleep, locals: { host: request.headers["Host"] }
   end
