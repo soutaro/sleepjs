@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>sleep.js - Make your web app sleep for seconds</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/sleep.js"></script>
+    <script>
+      $(function() {
+        $("#example-button").on("click", function() {
+          Sleep.sleep(1.5);
+          $("#example-button").toggleClass("btn-primary");
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="text-align:center; margin:30px">
+      <div style="font-size:120px; color:#444444; font-weight:200">sleep.js</div>
+      <div style="font-size:32px; color:#444">Make Your Web App Sleep for Seconds</div>
+    </div>
+    <div style="background:url(/4532294801_d34d36ed57_o.jpg) center center; background-size:cover; height:500px; width:100%; position:relative;">
+    </div>
+    <div class="container" style="margin-top:30px">
+      <h1>Getting Started</h1>
+
+      <p>Include the sleep.js script tag on your page.</p>
+      <pre>
+&lt;script src="//<%= host %>/sleep.js"&gt;&lt;/script&gt;
+</pre>
+
+      <p>
+        Write <code>Sleep.sleep(2.3)</code> in your JS program to sleep for 2.3 seconds.
+      </p>
+
+      <pre>
+Sleep.sleep(2.3);
+</pre>
+      
+      <h2>Example</h2>
+      <p>
+        The following example shows the sleep for 1.5 seconds before CSS manipulation.
+        The UI will freeze for 1.5 seconds, and then the button will go blue/white.
+      </p>
+      <pre>
+$("#example-button").on("click", function() {
+  Sleep.sleep(1.5);
+  $("#example-button").toggleClass("btn-primary");
+});
+</pre>
+      <a class="btn btn-default" id="example-button">Run Example</a>
+
+      <h2>API</h2>
+
+      <h3>Sleep.sleep(<i>t</i>)</h3>
+
+      <p>
+        Halt the execution of your JavaScript program for <i>t</i> seconds.
+        <i>t</i> can be positive number, and have to be less than 30.
+        If you give negative number, or something else, it will sleep for 0 second.
+        If you give greater than 30, it will sleep 30 second.
+      </p>
+
+      <h3>Sleep.url</h3>
+
+      <p>
+        A string to identify the endpoint of the API.
+        The default URL points to the host <code>sleep.js</code> is downloaded from.
+      </p>
+
+      <h1>Implementation</h1>
+
+      <p>
+        Synchronous XHR is one of the last way to block JS execution in modern browser environment.
+        This library issues a synchronous XHR request to a web app, which the client can specify how long to generate response.
+      </p>
+
+      <p>
+        We can not strictly specify how long to sleep.
+        The duration we can control is only the one that the web app generates response.
+        UI will block while sending and receiving the request to the web app.
+        If you need very short period of sleep, it should be better to use simple busy loop.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="container" style="text-align:center">
+      <p>Soutaro Matsumoto, matsumoto@soutaro.com</p>
+      <p>Cover photo by Trey Ratcliff, <a href="https://www.flickr.com/photos/stuckincustoms/4532294801">https://www.flickr.com/photos/stuckincustoms/4532294801</a></p>
+    </div>
+  </body>
+ </html>

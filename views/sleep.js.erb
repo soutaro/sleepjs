@@ -1,0 +1,14 @@
+(function () {
+  Sleep = {};
+
+  Sleep.url = "//<%= host %>/delay/";
+
+  Sleep.sleep = function (seconds) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', Sleep.url + seconds, false);
+    xhr.send();
+    return true;
+  }
+
+  window.Sleep = Sleep;
+})();
